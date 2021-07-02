@@ -1,0 +1,23 @@
+name: 'Check Issue Assignees with Commenters'
+author: 'MV Karan'
+description: 'Check whether all assignees on a GitHub Issue have commented on the Issue or not'
+branding:
+  icon: 'sliders'
+  color: 'green'
+inputs:
+  token:
+    description: 'Your GitHub Token on behalf of which the Action will be acting. Usually GITHUB_TOKEN.'
+    required: true
+  label:
+    description: 'The label based on which an Issue has to be searched for'
+    required: true
+  commentBody:
+    description: 'What comment should be added to the Issue once everyone on the assignees have commented'
+    required: false
+    default: 'All assignees on this Issue have commented!'
+outputs:
+  allAssigneesHaveCommented: 
+    description: 'Returns true if all assignees on the Issue have commented'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
