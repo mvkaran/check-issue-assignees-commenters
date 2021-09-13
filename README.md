@@ -5,7 +5,7 @@ This GitHub Action looks for an Issue in a repository based on a label, checks w
 ## Usage
 
 ```yml
-- uses: mvkaran/check-issue-assignees-commenters@v1.0.0
+- uses: mvkaran/check-issue-assignees-commenters@v1.0.1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         label: 'bug'
