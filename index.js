@@ -33,6 +33,11 @@ async function run() {
       .then((issues) => {
         core.info(`Found ${issues.length} issues`);
 
+        // If there are not matching issues, exit the workflow
+        if (issues.length === 0) {
+          throw new Error('No matching issues found');
+        }
+        
         //Set run() scoped variable 'assignees' with the array of assignees for later use
         assignees = issues[0].assignees.map((assignee) => assignee.login);
 
@@ -88,7 +93,9 @@ async function run() {
         }
       })
       .catch((err) => {
-        core.setFailed(err.message);
+        if(err.message !== 'No matching issues found') {
+          core.setFailed(err.message);
+        }
       });
 }
 
